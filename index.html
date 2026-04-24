@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>SSPL · 상상플러스랩</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  body { margin: 0; background: #fff; }
+  * { box-sizing: border-box; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="./Primitives.jsx"></script>
+<script type="text/babel" src="./HomeSections.jsx"></script>
+<script type="text/babel" src="./ServicePages.jsx"></script>
+<script type="text/babel" src="./CategoryPages.jsx"></script>
+<script type="text/babel" src="./ContactPage.jsx"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+function App() {
+  const [page, setPage] = useState('home');
+
+  const onNav = (k) => {
+    setPage(k);
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  };
+
+  return (
+    <div style={{minHeight: '100vh', fontFamily: 'Pretendard Variable, Inter, sans-serif'}}>
+      <GlobalNav onNav={onNav} active={page}/>
+
+      {page === 'home' && (
+        <>
+          <Hero onCTA={() => onNav('contact')}/>
+          <TrustStats/>
+          <ServiceGrid onPick={onNav}/>
+          <ProcessStrip/>
+          <CaseSection/>
+          <CTABand onCTA={() => onNav('contact')}/>
+        </>
+      )}
+
+      {page === 'consulting' && <ConsultingPage/>}
+      {page === 'funding' && <FundingPage/>}
+      {page === 'finance' && <FinancePage/>}
+      {page === 'patent' && <PatentPage/>}
+      {page === 'smart' && <SmartPage/>}
+      {page === 'esg' && <ESGPage/>}
+      {page === 'process' && <ProcessPage/>}
+      {page === 'contact' && <ContactPage/>}
+
+      {(page === 'about' || page === 'cases') && (
+        <div style={{minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 80, textAlign: 'center', background: colors.pale}}>
+          <div>
+            <div style={{fontSize: 13, color: colors.text2, letterSpacing: '0.1em', marginBottom: 12}}>COMING SOON</div>
+            <h1 style={{fontFamily: 'Inter Tight, Pretendard Variable', fontSize: 48, fontWeight: 600, margin: '0 0 16px', color: colors.ink, letterSpacing: '-0.5px'}}>준비 중입니다</h1>
+            <p style={{fontSize: 17, color: colors.text2, margin: 0}}>이 섹션은 기획 단계입니다. 홈으로 이동해 전체 프로토타입을 확인하세요.</p>
+            <div style={{marginTop: 24}}>
+              <Button variant="pill" onClick={() => onNav('home')}>홈으로 돌아가기</Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <Footer/>
+      <FloatingContact onContact={() => onNav('contact')}/>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
