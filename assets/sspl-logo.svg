@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" width="340" height="80">
+  <defs>
+    <linearGradient id="sspl-blue-deep" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e6fd9"></stop>
+      <stop offset="55%" stop-color="#0a3e9c"></stop>
+      <stop offset="100%" stop-color="#061f5c"></stop>
+    </linearGradient>
+    <linearGradient id="sspl-mark-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2563eb"></stop>
+      <stop offset="100%" stop-color="#061f5c"></stop>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0,14)">
+    <rect x="0" y="0" width="52" height="52" rx="14" fill="url(#sspl-mark-bg)"></rect>
+    <g fill="#ffffff" fill-opacity="0.96">
+      <rect x="13" y="24" width="26" height="4" rx="2"></rect>
+      <rect x="24" y="13" width="4" height="26" rx="2"></rect>
+    </g>
+  </g>
+  <g font-family="Inter Tight, -apple-system, Helvetica, sans-serif">
+    <text x="68" y="44" font-size="34" letter-spacing="-1.4" font-weight="700" fill="url(#sspl-blue-deep)">SSPL</text>
+    <text x="170" y="36" font-size="12" letter-spacing="0.6" font-weight="600" fill="#1d1d1f">상상플러스랩</text>
+    <text x="170" y="54" font-size="10" letter-spacing="1.2" font-weight="500" fill="#6e6e73">SANGSANG PLUS LAB</text>
+  </g>
+</svg>
